@@ -1,0 +1,42 @@
+body,
+html {
+    margin: 0;
+    padding: 0;
+    background-color: #1e1e1e;
+    overflow: hidden;
+}
+
+.terminal-window {
+    background-color: #1e1e1e;
+    color: #f1f1f1;
+    font-family: 'Courier New', Courier, monospace;
+    padding: 20px;
+    height: 100vh;
+    box-sizing: border-box;
+}
+
+.stdout {
+    white-space: pre-wrap;
+    margin-bottom: 10px;
+    min-height: 1.2em;
+}
+
+.cli-container {
+    display: flex;
+    align-items: center;
+}
+
+.prompt {
+    color: #0f0;
+    margin-right: 10px;
+}
+
+.cli-input {
+    background: transparent;
+    border: none;
+    color: #f1f1f1;
+    font-family: inherit;
+    font-size: 1rem;
+    outline: none;
+    width: 100%;
+}

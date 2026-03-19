@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>five-room environment</title>
+    <link rel="stylesheet" href="/terminal.css">
+</head>
+
+<body>
+
+    <div id="app-terminal" class="terminal-window"></div>
+
+    <script src="/terminal.js"></script>
+
+    <script>
+        const a = [
+            // NSEW
+            [0, 2, 3, 0], // room 1
+            [1, 0, 5, 0], // room 2
+            [0, 4, 0, 1], // room 3
+            [3, 5, 0, 0], // room 4
+            [4, 0, 0, 2]  // room 5
+        ];
+        const n = ["WORKMAN'S HUT", "GUARD'S QUARTERS", "STORAGE ROOM", "ARMORY", "MAIN HALL"];
+        const d = ["NORTH", "SOUTH", "EAST", "WEST"];
+        let ro = 0;
+
+        function prompt() {
+            let p = `you are in the ${n[ro]}\n\n`;
+            if (a[ro][0] != 0) {
+                p += `a door leads to the ${d[0]}\n`;
+            }
+            if (a[ro][1] != 0) {
+                p += `there is an exit to the ${d[1]}\n`;
+            }
+            if (a[ro][2] != 0) {
+                p += `you can leave via the ${d[2]}\n`;
+            }
+            if (a[ro][3] != 0) {
+                p += `a doorway opens to the ${d[3]}\n`;
+            }
+            p += "\nwhich direction\n";
+            return p;
+        }
+
+        function move(dir) {
+            if (a[ro][dir] != 0) {
+                ro = a[ro][dir] - 1;
+                return prompt();
+            } else {
+                if (dir == 0) {
+                    return "you cannot move that way\n\n" + prompt();
+                } else if (dir == 1) {
+                    return "you can't walk through walls\n\n" + prompt();
+                } else if (dir == 2) {
+                    return "try another direction\n\n" + prompt();
+                } else if (dir == 3) {
+                    return `there is no door to the ${d[3]}\n\n` + prompt();
+                }
+            }
+        }
+
+        const terminalInstance = new Terminal('app-terminal', {
+            prompt: prompt(),
+            commands: {
+                'n': () => move(0),
+                's': () => move(1),
+                'e': () => move(2),
+                'w': () => move(3),
+                '*': () => "invalid command\n\n" + prompt()
+            }
+        });
+
+        updateTerminal();
+    </script>
+
+</body>
+
+</html>
