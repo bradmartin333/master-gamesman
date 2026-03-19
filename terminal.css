@@ -47,3 +47,30 @@ html {
     outline: none;
     width: 100%;
 }
+
+.github-link-button {
+    position: fixed;
+    right: 16px;
+    bottom: 16px;
+    width: 42px;
+    height: 42px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--terminal-fg);
+    border-radius: 999px;
+    background-color: var(--terminal-bg);
+    opacity: 0.8;
+    transition: opacity 0.2s ease;
+    z-index: 1000;
+}
+
+.github-link-button:hover,
+.github-link-button:focus-visible {
+    opacity: 1;
+}
+
+.github-link-button svg {
+    width: 22px;
+    height: 22px;
+}
