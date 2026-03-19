@@ -1,15 +1,22 @@
+:root {
+    --terminal-bg: #1e1e1e;
+    --terminal-fg: #f1f1f1;
+    --terminal-prompt: #0f0;
+    --terminal-font: 'Courier New', Courier, monospace;
+}
+
 body,
 html {
     margin: 0;
     padding: 0;
-    background-color: #1e1e1e;
+    background-color: var(--terminal-bg);
     overflow: hidden;
 }
 
 .terminal-window {
-    background-color: #1e1e1e;
-    color: #f1f1f1;
-    font-family: 'Courier New', Courier, monospace;
+    background-color: var(--terminal-bg);
+    color: var(--terminal-fg);
+    font-family: var(--terminal-font);
     padding: 20px;
     height: 100vh;
     box-sizing: border-box;
@@ -27,14 +34,14 @@ html {
 }
 
 .prompt {
-    color: #0f0;
+    color: var(--terminal-prompt);
     margin-right: 10px;
 }
 
 .cli-input {
     background: transparent;
     border: none;
-    color: #f1f1f1;
+    color: var(--terminal-fg);
     font-family: inherit;
     font-size: 1rem;
     outline: none;
