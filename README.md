@@ -8,3 +8,4 @@
 
 - [4: creating the floor plan](./werewolves-and-wanderers/chapter-4.html)
 - [6: the environment unfolds](./werewolves-and-wanderers/chapter-6.html)
+- [7: treasure and terror](./werewolves-and-wanderers/chapter-7.html)

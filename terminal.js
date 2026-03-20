@@ -2,7 +2,9 @@ class Terminal {
     constructor(containerId, options = {}) {
         this.container = document.getElementById(containerId);
         this.commands = options.commands || {};
-        this.prompt = options.prompt || "System Initialized...";
+        this.prompt = options.prompt || "what is your name, explorer";
+        this.initName = options.prompt === undefined;
+        this.name = "EXPLORER";
 
         this.init();
     }
@@ -34,7 +36,12 @@ class Terminal {
     }
 
     handleCommand(cmd) {
-        if (this.commands[cmd]) {
+        if (this.initName) {
+            this.initName = false;
+            this.name = cmd.toUpperCase() || "EXPLORER";
+            const response = this.commands['welcome']();
+            this.print(response);
+        } else if (this.commands[cmd]) {
             const response = this.commands[cmd]();
             this.print(response);
         } else {

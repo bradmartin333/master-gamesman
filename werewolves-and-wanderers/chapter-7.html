@@ -4,13 +4,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>three-level environment</title>
+    <title>distribute treasure and monsters</title>
     <link rel="stylesheet" href="../terminal.css">
 </head>
 
 <body>
 
-    <div class="about-section">this chapter provides the three-level map of the castle</div>
+    <div class="about-section">
+        this chapter captures the players name, populates the map with treasure & monsters 
+        and allocates stats & items to the player
+    </div>
 
     <div id="app-terminal" class="terminal-window"></div>
 
@@ -47,8 +50,45 @@
         const d = ["NORTH", "SOUTH", "EAST", "WEST", "UP", "DOWN"];
         let ro = 5;
 
+        let strength = 100;
+        let wealth = 75;
+        let food = 0;
+        let tally = 0;
+        let mk = 0; // monster kills
+
+        let sword = false;
+        let amulet = false;
+        let axe = false;
+        let suit = false;
+        let light = false;
+
+        function populateRooms() {
+            // treasure
+            for (let i = 0; i < 4; i++) {
+                const rand = Math.floor(Math.random() * a.length);
+                if (rand === 5 || rand === 10 || a[rand][6] != 0) {
+                    i--;
+                } else {
+                    a[rand][6] = Math.floor(Math.random() * 100) + 10;; // between $10 and $109
+                }
+            }
+            // monsters
+            for (let i = 0; i < 4; i++) {
+                const rand = Math.floor(Math.random() * a.length);
+                if (rand === 5 || rand === 10 || a[rand][6] != 0) {
+                    i--;
+                } else {
+                    a[rand][6] = -i; // mark the room as containing a monster
+                }
+            }
+            // between $100 and $199 in the private meeting room and the treasury
+            a[3][6] = 100 + Math.floor(Math.random() * 100);
+            a[15][6] = 100 + Math.floor(Math.random() * 100);
+        }
+
         function prompt() {
             let p = `you are in the ${n[ro]}\n\n`;
+            // possible moves
             if (a[ro][0] != 0) {
                 p += `a door leads to the ${d[0]}\n`;
             }
@@ -67,6 +107,13 @@
             if (a[ro][5] != 0) {
                 p += `there is a staircase leading ${d[5]}\n`;
             }
+            // what is in the room
+            if (a[ro][6] > 0) {
+                p += `\nthere is $${a[ro][6]} in this room, but you cannot collect it, yet...\n`;
+            } else if (a[ro][6] < 0) {
+                p += `\nthere is a monster in this room, but you can't do anything about that, yet...\n`;
+            }
+            // question
             p += "\nwhich direction\n";
             return p;
         }
@@ -95,8 +142,9 @@
             }
         }
 
+        populateRooms();
+
         const terminalInstance = new Terminal('app-terminal', {
-            prompt: prompt(),
             commands: {
                 'n': () => move(0),
                 's': () => move(1),
@@ -104,6 +152,7 @@
                 'w': () => move(3),
                 'u': () => move(4),
                 'd': () => move(5),
+                'welcome': () => `welcome, ${terminalInstance.name}! your adventure begins...\n\n` + prompt(),
                 '*': () => "invalid command\n\n" + prompt()
             }
         });
