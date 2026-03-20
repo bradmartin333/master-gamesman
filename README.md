@@ -1,4 +1,4 @@
-# master gamesman
+# [master gamesman](https://github.com/bradmartin333/master-gamesman)
 
 [tim hartnell's 1983 book "creating adventure games on your computer"](https://colorcomputerarchive.com/repo/Documents/Books/Creating%20Adventure%20Games%20on%20Your%20Computer%20(Tim%20Hartnell).pdf)
 
