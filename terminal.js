@@ -36,6 +36,9 @@ class Terminal {
     }
 
     handleCommand(cmd) {
+        if (!cmd) {
+            return;
+        }
         if (this.initName) {
             this.initName = false;
             this.name = cmd.toUpperCase() || "EXPLORER";
