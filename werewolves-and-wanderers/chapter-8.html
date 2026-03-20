@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -86,7 +86,7 @@
         }
 
         function getStatus() {
-            const lightState = "\nit is too dark to see anything\n\n";
+            const lightState = light ? "\n\n" : "\nit is too dark to see anything\n\n";
             let s = `${terminalInstance.name}, your strength is ${strength}`;
             if (wealth > 0) {
                 s += `\nyou have $${wealth}`;
