@@ -41,8 +41,11 @@ class Terminal {
             this.name = cmd.toUpperCase() || "EXPLORER";
             const response = this.commands['welcome']();
             this.print(response);
-        } else if (this.commands[cmd]) {
-            const response = this.commands[cmd]();
+            return;
+        }
+        const firstChar = cmd.charAt(0);
+        if (this.commands[firstChar]) {
+            const response = this.commands[firstChar]();
             this.print(response);
         } else {
             const response = this.commands['*']();
