@@ -74,6 +74,9 @@
         function move(dir) {
             if (a[ro][dir] != 0) {
                 ro = a[ro][dir] - 1;
+                if (ro == 10) {
+                    return "you have found the exit from the castle!";
+                }
                 return prompt();
             } else {
                 if (dir == 0) {
