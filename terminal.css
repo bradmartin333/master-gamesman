@@ -3,6 +3,9 @@
     --terminal-fg: #f1f1f1;
     --terminal-prompt: #0f0;
     --terminal-font: 'Courier New', Courier, monospace;
+    --terminal-panel-bg: #252526;
+    --terminal-panel-border: #3a3a3a;
+    --terminal-muted: #b8b8b8;
 }
 
 body,
@@ -10,7 +13,19 @@ html {
     margin: 0;
     padding: 0;
     background-color: var(--terminal-bg);
-    overflow: hidden;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.about-section {
+    display: block;
+    width: 320px;
+    margin: 12px 0 8px 0;
+    padding: 10px;
+    border-left: 3px solid var(--terminal-prompt);
+    background-color: var(--terminal-panel-bg);
+    color: var(--terminal-fg);
+    font-family: var(--terminal-font);
 }
 
 .terminal-window {

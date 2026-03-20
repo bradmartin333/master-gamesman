@@ -4,6 +4,6 @@
 
 ## werewolves and wanderers
 
-### chapters
+### chapter
 
 - [4: creating the floor plan](./werewolves-and-wanderers/4_creating-the-floor-plan/index.html)
